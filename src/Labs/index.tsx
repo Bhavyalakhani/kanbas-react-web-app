@@ -7,7 +7,7 @@ import Lab2 from "./Lab2";
 export default function Labs() {
   return (
     <div id="wd-labs">
-      <h1>BHAVYA KETAN LAKHANI</h1>
+      <h1>BHAVYA LAKHANI</h1>
       <h1>Labs</h1>
       <TOC />
       <Routes>
