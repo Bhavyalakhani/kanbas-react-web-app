@@ -7,11 +7,20 @@ import { IoEllipsisVertical } from "react-icons/io5";
 export default function Assignments() {
   return (
     <div id="wd-assignments">
-      <div className="d-inline-flex align-items-center">
-        <CiSearch />
+      <div
+        className="d-inline-flex align-items-center"
+        style={{
+          borderColor: "black",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderRadius: "5px",
+        }}
+      >
+        <CiSearch style={{ fontSize: "20px", marginRight: "5px" }} />
         <input
           id="wd-search-assignment"
           className="ml-3"
+          style={{ border: "none", outline: "none" }}
           placeholder="Search..."
         />
       </div>
