@@ -42,75 +42,83 @@ export default function Assignments() {
           </div>
           <ul id="wd-assignment-list" className="list-group rounded-0">
             <li className="wd-assignment-list-item wd-lesson list-group-item p-3 ms-0 ps-1">
-              <div className="d-flex" style={{alignItems: "center"}}>
+              <div className="d-flex" style={{ alignItems: "center" }}>
                 <div>
                   <BsGripVertical className="me-3 fs-3" />
                   <TfiWrite className="me-4 fs-3 " />
                 </div>
                 <div>
-                  <a
-                    className="wd-assignment-link"
-                    href="#/Kanbas/Courses/1234/Assignments/123"
-                  >
-                    A1
-                  </a>{" "}
+                  <b>
+                    <a
+                      className="wd-assignment-link"
+                      href="#/Kanbas/Courses/1234/Assignments/123"
+                      style={{ color: "black" }}
+                    >
+                      A1
+                    </a>{" "}
+                  </b>
                   <br />
                   <span className="text-danger">Multiple Modules</span> |{" "}
                   <b>Not available until</b> May 6 at 12:00am |
                   <br />
                   <b>Due</b> May 13 at 11:59pm | 100 pts
                 </div>
-                <div style={{marginLeft: "auto"}}>
-                  <LessonControlButtons/>
+                <div style={{ marginLeft: "auto" }}>
+                  <LessonControlButtons />
                 </div>
               </div>
             </li>
             <li className="wd-assignment-list-item wd-lesson list-group-item p-3 ms-0 ps-1">
-              <div className="d-flex" style={{alignItems: "center"}}>
+              <div className="d-flex" style={{ alignItems: "center" }}>
                 <div>
                   <BsGripVertical className="me-3 fs-3" />
                   <TfiWrite className="me-4 fs-3 " />
                 </div>
                 <div>
-                  <a
-                    className="wd-assignment-link"
-                    href="#/Kanbas/Courses/1234/Assignments/123"
-                  >
-                    A2
-                  </a>{" "}
+                  <b>
+                    <a
+                      className="wd-assignment-link"
+                      href="#/Kanbas/Courses/1234/Assignments/123"
+                      style={{ color: "black" }}
+                    >
+                      A2
+                    </a>{" "}
+                  </b>
                   <br />
                   <span className="text-danger">Multiple Modules</span> |{" "}
                   <b>Not available until</b> May 13 at 12:00am |
                   <br />
                   <b>Due</b> May 20 at 11:59pm | 100 pts
                 </div>
-                <div style={{marginLeft: "auto"}}>
-                  <LessonControlButtons/>
+                <div style={{ marginLeft: "auto" }}>
+                  <LessonControlButtons />
                 </div>
               </div>
             </li>
             <li className="wd-assignment-list-item wd-lesson list-group-item p-3 ms-0 ps-1">
-              <div className="d-flex" style={{alignItems: "center"}}>
+              <div className="d-flex" style={{ alignItems: "center" }}>
                 <div>
                   <BsGripVertical className="me-3 fs-3" />
                   <TfiWrite className="me-4 fs-3 " />
                 </div>
                 <div>
-                  <a
-                    className="wd-assignment-link underline-no"
-                    href="#/Kanbas/Courses/1234/Assignments/123"
-                    style={{textDecoration : "none"}}
-                  >
-                    A3
-                  </a>{" "}
+                  <b>
+                    <a
+                      className="wd-assignment-link underline-no"
+                      href="#/Kanbas/Courses/1234/Assignments/123"
+                      style={{ color: "black" }}
+                    >
+                      A3
+                    </a>{" "}
+                  </b>
                   <br />
                   <span className="text-danger">Multiple Modules</span> |{" "}
                   <b>Not available until</b> May 20 at 12:00am |
                   <br />
                   <b>Due</b> May 27 at 11:59pm | 100 pts
                 </div>
-                <div style={{marginLeft: "auto"}}>
-                  <LessonControlButtons/>
+                <div style={{ marginLeft: "auto" }}>
+                  <LessonControlButtons />
                 </div>
               </div>
             </li>

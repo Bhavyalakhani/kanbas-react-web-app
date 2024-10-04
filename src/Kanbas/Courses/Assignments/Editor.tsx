@@ -7,16 +7,15 @@ export default function AssignmentEditor() {
         className="d-flex align-items-center min-vh-100"
       >
         <div className="col-md-9">
-          <div className="row mb-1 text-end">
-            <label className="col-sm-2 me-3 col-form-label"></label>
-            Assignment Name
+          <div className="row mb-1">
+            <label className="col-sm-6 me-3 col-form-label">Assignment Name</label>
           </div>
           <div className="row mb-3 text-end">
             <label
               htmlFor="wd-name"
               className="col-sm-2 col-form-label"
             ></label>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <input id="wd-name" className="form-control" value="A1" />
             </div>
           </div>
@@ -25,7 +24,7 @@ export default function AssignmentEditor() {
               htmlFor="wd-description"
               className="col-sm-2 col-form-label"
             ></label>
-            <div className="col-sm-10">
+            <div className="col-sm-12">
               <p id="wd-description" className="form-control">
                 The assignment is{" "}
                 <span className="text-danger">available online.</span>
