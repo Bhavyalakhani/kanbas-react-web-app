@@ -61,7 +61,7 @@ export default function Dashboard() {
                 />
                 <div className="card-body">
                   <h5 className="wd-dashboard-course-title card-title">
-                    Artificial Intelligence
+                    Artificial Intelligence Course
                   </h5>
                   <p className="wd-dashboard-course-title card-text">
                     Artificial Intelligence course
@@ -107,7 +107,7 @@ export default function Dashboard() {
                 />
                 <div className="card-body">
                   <h5 className="wd-dashboard-course-title card-title">
-                    Distributed Systems
+                    Introduction to Distributed Systems
                   </h5>
                   <p className="wd-dashboard-course-title card-text">
                     Distributed Systems course

@@ -28,4 +28,26 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   .wd-lesson {
     border-left: 3px solid green !important;
   }
+
+  #wd-search-assignment {
+
+    width: 140px; /* Sets the input width to 200 pixels */
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .wd-rounded-corners-all-around {
+    border-radius: 50px;
+   }
+   
+  #wd-search-box {
+
+    width: 180px; /* Sets the input width to 200 pixels */
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .wd-assignment-link{
+    text-decoration: none;
+  }
   
