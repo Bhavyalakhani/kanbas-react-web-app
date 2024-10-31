@@ -25,4 +25,5 @@ export default function Signin() {
         Signin
       </Link>
     </div>
-  )};
+  );
+}
