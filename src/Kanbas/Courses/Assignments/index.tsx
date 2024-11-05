@@ -4,10 +4,16 @@ import LessonControlButtons from "../Modules/LessonControlButtons";
 import { CiSearch } from "react-icons/ci";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { useParams } from "react-router";
-import * as db from "../../Database";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAssignment } from "./reducer";
+import { Link } from "react-router-dom";
+import ProtectedFacultyRoute from "../../Account/ProtectedFacultyRoute";
+import AssignmentDeleteButton from "./AssignmentDeleteButton";
 
 export default function Assignments() {
-  const assignments = db.assignments;
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const dispatch = useDispatch();
   const { cid } = useParams();
 
   return (
@@ -23,18 +29,22 @@ export default function Assignments() {
           placeholder="Search..."
         />
       </div>
-      <button
-        id="wd-add-assignment"
-        className="btn btn-md btn-danger me-1 float-end"
-      >
-        + Assignment
-      </button>
-      <button
-        id="wd-add-assignment-group"
-        className="btn btn-md me-1 bg-secondary float-end"
-      >
-        + Group
-      </button>
+      <ProtectedFacultyRoute>
+        <Link to={`/Kanbas/Courses/${cid}/Assignments/New`}>
+          <button
+            id="wd-add-assignment"
+            className="btn btn-md btn-danger me-1 float-end"
+          >
+            + Assignment
+          </button>
+        </Link>
+        <button
+          id="wd-add-assignment-group"
+          className="btn btn-md me-1 bg-secondary float-end"
+        >
+          + Group
+        </button>
+      </ProtectedFacultyRoute>
       <br />
       <br />
 
@@ -51,8 +61,8 @@ export default function Assignments() {
           </div>
           <ul id="wd-assignment-list" className="list-group rounded-0">
             {assignments
-              .filter((assignment) => assignment.course == cid)
-              .map((assignment) => (
+              .filter((assignment: any) => assignment.course == cid)
+              .map((assignment: any) => (
                 <li className="wd-assignment-list-item wd-lesson list-group-item p-3 ms-0 ps-1">
                   <div className="d-inline-flex">
                     <div className="align-self-center">
@@ -60,12 +70,18 @@ export default function Assignments() {
                       <TfiWrite className="me-4 fs-3 " />
                     </div>
                     <div>
-                      <a
-                        className="wd-assignment-link"
-                        href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
-                      >
-                        {assignment._id}- {assignment.title}
-                      </a>{" "}
+                      {currentUser.role === "STUDENT" ? (
+                        <span>
+                          {assignment._id} - {assignment.title}
+                        </span> // Render as text if the role is STUDENT
+                      ) : (
+                        <a
+                          className="wd-assignment-link"
+                          href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                        >
+                          {assignment._id} - {assignment.title}
+                        </a> // Render as a link for other roles
+                      )}{" "}
                       <br />
                       <span className="text-danger">
                         Multiple Modules
@@ -75,6 +91,20 @@ export default function Assignments() {
                     </div>
                   </div>
                   <LessonControlButtons />
+                  <ProtectedFacultyRoute>
+                    <AssignmentDeleteButton
+                      aid={assignment._id}
+                      deleteAssignment={(id: any) => {
+                        console.log("inside function" + id);
+                        const confirmed = window.confirm(
+                          "Are you sure you want to delete this assignment?"
+                        );
+                        if (confirmed) {
+                          dispatch(deleteAssignment({ _id: id }));
+                        }
+                      }}
+                    />
+                  </ProtectedFacultyRoute>
                 </li>
               ))}
           </ul>

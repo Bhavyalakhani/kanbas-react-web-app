@@ -1,10 +1,53 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { assignments } from "../../Database";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { addAssignment, updateAssignment } from "./reducer";
+
 export default function AssignmentEditor() {
   const { aid } = useParams();
   const { cid } = useParams();
-  const assignment = assignments.find((assignment) => assignment._id == aid);
+  const dispatch = useDispatch();
+
+  const assignments = useSelector(
+    (state: any) => state.assignmentReducer.assignments
+  );
+  const assignment = assignments.find(
+    (assignment: any) => assignment._id == aid
+  );
+
+  const [title, setTitle] = useState(assignment ? assignment.title : "");
+  const [points, setPoints] = useState(assignment ? assignment.points : "");
+  const [dueDate, setDueDate] = useState(assignment ? assignment.dueDate : "");
+  const [availableDate, setAvailableDate] = useState(
+    assignment ? assignment.availableDate : ""
+  );
+
+  const handleSave = () => {
+    if (aid) {
+      dispatch(
+        updateAssignment({
+          _id: aid,
+          title,
+          courseId: cid,
+          points,
+          dueDate,
+          availableDate,
+        })
+      );
+    } else {
+      dispatch(
+        addAssignment({
+          title,
+          courseId: cid,
+          points,
+          dueDate,
+          availableDate,
+        })
+      );
+    }
+  };
+
   return (
     <div>
       <div
@@ -22,7 +65,12 @@ export default function AssignmentEditor() {
               className="col-sm-2 col-form-label"
             ></label>
             <div className="col-sm-10">
-              <input id="wd-name" className="form-control" value={aid} />
+              <input
+                id="wd-name"
+                className="form-control"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </div>
           </div>
           <div className="row mb-3">
@@ -60,7 +108,12 @@ export default function AssignmentEditor() {
               Points
             </label>
             <div className="col-sm-8">
-              <input id="wd-points" className="form-control" value={100} />
+              <input
+                id="wd-points"
+                className="form-control"
+                value={points}
+                onChange={(e) => setPoints(e.target.value)}
+              />
             </div>
           </div>
 
@@ -78,7 +131,6 @@ export default function AssignmentEditor() {
               </select>
             </div>
           </div>
-
           <div className="row mb-3 text-end">
             <label
               htmlFor="wd-display-grade-as"
@@ -96,7 +148,6 @@ export default function AssignmentEditor() {
               </select>
             </div>
           </div>
-
           <div className="row mb-3">
             <label
               htmlFor="wd-submission-type"
@@ -111,11 +162,9 @@ export default function AssignmentEditor() {
                 </option>
                 <option value="Offline">Offline</option>
               </select>
-
               <div className="d-flex justify-content-start m-2 ms-1 fw-bold">
                 Online Entry Options
               </div>
-
               <div className="col-sm-8 ms-1">
                 <div className="form-check">
                   <input
@@ -186,7 +235,7 @@ export default function AssignmentEditor() {
               </div>
             </div>
           </div>
-
+          {/* Assign to and Due Date */}
           <div className="row mb-3">
             <label
               htmlFor="wd-assign-to"
@@ -217,7 +266,8 @@ export default function AssignmentEditor() {
                 type="date"
                 id="wd-due-date"
                 className="form-control"
-                defaultValue="2024-09-21"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
               />
 
               <div className="row mb-3">
@@ -232,7 +282,8 @@ export default function AssignmentEditor() {
                     type="date"
                     id="wd-available-from"
                     className="form-control"
-                    defaultValue="2024-09-21"
+                    defaultValue={availableDate}
+                    onChange={(e) => setAvailableDate(e.target.value)}
                   />
                 </div>
                 <div className="col-sm-6">
@@ -266,6 +317,7 @@ export default function AssignmentEditor() {
               to={`/Kanbas/Courses/${cid}/Assignments`}
               className="btn btn-success btn-danger"
               id="wd-course-assignment-link"
+              onClick={handleSave}
             >
               Save
             </Link>

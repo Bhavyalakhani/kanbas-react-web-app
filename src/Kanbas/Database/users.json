@@ -109,4 +109,18 @@
     "section": "S101",
     "lastActivity": "2020-11-11",
     "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "123",
+    "username": "bhavya",
+    "password": "bhavya",
+    "firstName": "Bhavya",
+    "lastName": "Lakhani",
+    "email": "lakhani.bha@northeastern.edu",
+    "dob": "2873-07-15",
+    "role": "FACULTY",
+    "loginId": "001234569S",
+    "section": "S101",
+    "lastActivity": "2020-11-11",
+    "totalActivity": "21:32:43"
   }]
