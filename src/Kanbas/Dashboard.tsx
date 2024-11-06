@@ -54,12 +54,10 @@ export default function Dashboard({
         <h1 id="wd-dashboard-title" className="flex-grow-1">
           Dashboard
         </h1>
-        {currentUser.role === "STUDENT" && (
-          <button onClick={toggleDisplayCourses} className="btn btn-primary">
-            {" "}
-            Enrollments{" "}
-          </button>
-        )}
+        <button onClick={toggleDisplayCourses} className="btn btn-primary">
+          {" "}
+          Enrollments{" "}
+        </button>
       </div>
       <hr />
       <ProtectedFacultyRoute>
@@ -97,13 +95,13 @@ export default function Dashboard({
         <hr />
       </ProtectedFacultyRoute>
       <h2 id="wd-dashboard-published" className="ps-4">
-        Published Courses ({courses.length})
+        Published Courses ({displayCourses.length})
       </h2>
       <div id="wd-dashboard-courses" className="row ps-4">
         <hr />
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {displayCourses.map((course: any) => (
-            <div className="wd-dashboard-course col" style={{ width: "270px" }}>
+            <div className="wd-dashboard-course col" style={{ width: "300px" }}>
               <div className="card rounded-3 overflow-hidden">
                 <img src={course.logo} width="100%" height={160} />
                 <div className="card-body">
@@ -121,68 +119,68 @@ export default function Dashboard({
                       className="wd-dashboard-course-link text-decoration-none text-dark"
                       to={`/Kanbas/Courses/${course._id}/Home`}
                     >
-                      <button className="btn btn-primary"> Go </button>
+                      <button className="btn btn-primary btn-sm"> Go </button>
                     </Link>
                   )}
-                  <ProtectedStudentRoute>
-                    {isUserEnrolledInCourse(course._id) && (
-                      <button
-                        onClick={(event) => {
-                          event.preventDefault();
-                          dispatch(
-                            unenroll({
-                              userId: currentUser._id,
-                              courseId: course._id,
-                            })
-                          );
-                        }}
-                        className="btn btn-danger float-end"
-                        id="wd-unenroll-course-click"
-                      >
-                        UnEnroll
-                      </button>
-                    )}
+                  {isUserEnrolledInCourse(course._id) && (
+                    <button
+                      onClick={(event) => {
+                        event.preventDefault();
+                        dispatch(
+                          unenroll({
+                            userId: currentUser._id,
+                            courseId: course._id,
+                          })
+                        );
+                      }}
+                      className="btn btn-danger float-end btn-sm"
+                      id="wd-unenroll-course-click"
+                    >
+                      UnEnroll
+                    </button>
+                  )}
 
-                    {!isUserEnrolledInCourse(course._id) && (
+                  {!isUserEnrolledInCourse(course._id) && (
+                    <button
+                      onClick={(event) => {
+                        event.preventDefault();
+                        dispatch(
+                          enroll({
+                            userId: currentUser._id,
+                            courseId: course._id,
+                          })
+                        );
+                      }}
+                      className="btn btn-success float-end btn-sm"
+                      id="wd-enroll-course-click"
+                    >
+                      Enroll
+                    </button>
+                  )}
+                  {isUserEnrolledInCourse(course._id) && (
+                    <ProtectedFacultyRoute>
                       <button
                         onClick={(event) => {
                           event.preventDefault();
-                          dispatch(
-                            enroll({
-                              userId: currentUser._id,
-                              courseId: course._id,
-                            })
-                          );
+                          deleteCourse(course._id);
                         }}
-                        className="btn btn-success float-end"
-                        id="wd-enroll-course-click"
+                        className="btn btn-danger me-2 float-end btn-sm"
+                        id="wd-delete-course-click"
                       >
-                        Enroll
+                        Delete
                       </button>
-                    )}
-                  </ProtectedStudentRoute>
-                  <ProtectedFacultyRoute>
-                    <button
-                      onClick={(event) => {
-                        event.preventDefault();
-                        deleteCourse(course._id);
-                      }}
-                      className="btn btn-danger float-end"
-                      id="wd-delete-course-click"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      id="wd-edit-course-click"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setCourse(course);
-                      }}
-                      className="btn btn-warning me-2 float-end"
-                    >
-                      Edit
-                    </button>
-                  </ProtectedFacultyRoute>
+                      <button
+                        id="wd-edit-course-click"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setCourse(course);
+                        }}
+                        className="btn btn-warning me-2 float-end btn-sm"
+                      >
+                        Edit
+                      </button>
+                    </ProtectedFacultyRoute>
+                  )}
                 </div>
               </div>
             </div>

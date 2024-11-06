@@ -16,11 +16,15 @@ export default function AssignmentEditor() {
     (assignment: any) => assignment._id == aid
   );
 
-  const [title, setTitle] = useState(assignment ? assignment.title : "");
-  const [points, setPoints] = useState(assignment ? assignment.points : "");
-  const [dueDate, setDueDate] = useState(assignment ? assignment.dueDate : "");
+  const [title, setTitle] = useState(
+    assignment ? assignment.title : "New Assignment"
+  );
+  const [points, setPoints] = useState(assignment ? assignment.points : 100);
+  const [dueDate, setDueDate] = useState(
+    assignment ? assignment.dueDate : "2024-05-15"
+  );
   const [availableDate, setAvailableDate] = useState(
-    assignment ? assignment.availableDate : ""
+    assignment ? assignment.availableDate : "2024-05-15"
   );
 
   const handleSave = () => {
@@ -131,6 +135,8 @@ export default function AssignmentEditor() {
               </select>
             </div>
           </div>
+
+          {/* Display Grade and Submission Type */}
           <div className="row mb-3 text-end">
             <label
               htmlFor="wd-display-grade-as"
@@ -148,6 +154,7 @@ export default function AssignmentEditor() {
               </select>
             </div>
           </div>
+
           <div className="row mb-3">
             <label
               htmlFor="wd-submission-type"
@@ -162,9 +169,11 @@ export default function AssignmentEditor() {
                 </option>
                 <option value="Offline">Offline</option>
               </select>
+
               <div className="d-flex justify-content-start m-2 ms-1 fw-bold">
                 Online Entry Options
               </div>
+
               <div className="col-sm-8 ms-1">
                 <div className="form-check">
                   <input
@@ -235,6 +244,7 @@ export default function AssignmentEditor() {
               </div>
             </div>
           </div>
+
           {/* Assign to and Due Date */}
           <div className="row mb-3">
             <label
@@ -305,6 +315,8 @@ export default function AssignmentEditor() {
             </div>
           </div>
           <hr />
+
+          {/* Save and Cancel Buttons */}
           <div className="d-flex justify-content-end mt-3">
             <Link
               to={`/Kanbas/Courses/${cid}/Assignments`}

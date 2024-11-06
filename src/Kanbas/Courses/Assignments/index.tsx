@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteAssignment } from "./reducer";
 import { Link } from "react-router-dom";
 import ProtectedFacultyRoute from "../../Account/ProtectedFacultyRoute";
+import { FaPencil, FaTrash } from "react-icons/fa6";
 import AssignmentDeleteButton from "./AssignmentDeleteButton";
 
 export default function Assignments() {
@@ -85,9 +86,10 @@ export default function Assignments() {
                       <br />
                       <span className="text-danger">
                         Multiple Modules
-                      </span> | <b>Not available until</b> May 6 at 12:00am |
+                      </span> | <b>Not available until</b>{" "}
+                      {assignment.availableDate} |
                       <br />
-                      <b>Due</b> May 13 at 11:59pm | 100 pts
+                      <b>Due</b> {assignment.dueDate} | {assignment.points}
                     </div>
                   </div>
                   <LessonControlButtons />
