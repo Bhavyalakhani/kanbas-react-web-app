@@ -11,6 +11,7 @@ export default function Courses({ courses }: { courses: any[] }) {
   const { cid } = useParams();
   const { pathname } = useLocation();
   const course = courses.find((course) => course._id === cid);
+
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
@@ -30,7 +31,7 @@ export default function Courses({ courses }: { courses: any[] }) {
             <Route path="Quizzes" element={<h3>Quizzes</h3>} />
             <Route path="Grades" element={<h3>Grades</h3>} />
             <Route path="Assignments" element={<Assignments />} />
-            <Route path="Assignments/New" element={<AssignmentEditor />} />
+            {/* <Route path="Assignments/New" element={<AssignmentEditor/>} /> */}
             <Route path="Assignments/:aid" element={<AssignmentEditor />} />
             <Route path="People" element={<PeopleTable />} />
           </Routes>

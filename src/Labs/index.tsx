@@ -12,7 +12,7 @@ export default function Labs() {
   return (
     <Provider store={store}>
       <div>
-        <h1>Pritam Anand Mane</h1>
+        <h1>Bhavya K Lakhani</h1>
         <h1>Labs</h1>
         <TOC />
         <Routes>
