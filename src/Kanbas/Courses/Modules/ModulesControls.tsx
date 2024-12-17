@@ -1,5 +1,5 @@
 import { FaPlus } from "react-icons/fa6";
-import GreenCheckmark from "./GreenCheckMark";
+import GreenCheckmark from "./GreenCheckmark";
 import { FaBan, FaCircle, FaSlash } from "react-icons/fa";
 import ModuleEditor from "./ModuleEditor";
 import ProtectedFacultyRoute from "../../Account/ProtectedFacultyRoute";

@@ -4,7 +4,7 @@ import * as client from "./client";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
 
-export default function SignUp() {
+export default function Signup() {
   const [user, setUser] = useState<any>({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export default function SignUp() {
     dispatch(setCurrentUser(currentUser));
     navigate("/Kanbas/Account/Profile");
   };
+
   return (
     <div className="wd-signup-screen">
       <h1>Sign up</h1>

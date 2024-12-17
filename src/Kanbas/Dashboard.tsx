@@ -90,7 +90,7 @@ export default function Dashboard({
           {courses.map((course: any) => (
             <div className="wd-dashboard-course col" style={{ width: "300px" }}>
               <div className="card rounded-3 overflow-hidden">
-                <img src={course.logo} width="100%" height={160} />
+                <img src="images/reactLogo.png" width="100%" height={160} />
                 <div className="card-body">
                   <h5 className="wd-dashboard-course-title card-title">
                     {course.name}

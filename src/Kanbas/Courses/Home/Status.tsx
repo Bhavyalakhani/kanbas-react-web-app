@@ -42,18 +42,19 @@ export default function CourseStatus() {
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <SiSimpleanalytics className="me-2 fs-5" /> View Course Stream{" "}
       </button>
+
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <FaBullhorn className="me-2 fs-5" /> New Announcement{" "}
       </button>
+
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <SiSimpleanalytics className="me-2 fs-5" /> New Analytics{" "}
       </button>
+
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <IoNotificationsOutline className="me-2 fs-5" /> View Course
         Notifications{" "}
       </button>
-      {/* Complete the rest of the buttons */}
-      {/* completed */}
     </div>
   );
 }

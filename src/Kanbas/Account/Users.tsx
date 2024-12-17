@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import PeopleTable from "../Courses/People/Table";
+import PeopleTable from "../Courses/People/table";
 import * as client from "./client";
 import { FaPlus } from "react-icons/fa";
 
@@ -77,6 +77,10 @@ export default function Users() {
         <option value="FACULTY">Faculty</option>
         <option value="ADMIN">Administrators</option>
       </select>
+      <br />
+      <br />
+      <br />
+      <br />
       <PeopleTable users={users} />
     </div>
   );

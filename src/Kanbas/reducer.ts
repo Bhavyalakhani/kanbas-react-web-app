@@ -24,6 +24,6 @@ const enrollmentSlice = createSlice({
             state.enrollments = newEnrollments;
         }
   }});
-
+  
 export const { enroll, unenroll } = enrollmentSlice.actions;
 export default enrollmentSlice.reducer;

@@ -13,11 +13,13 @@ export default function Profile() {
   const updateProfile = async () => {
     const updatedProfile = await client.updateUser(profile);
     dispatch(setCurrentUser(updatedProfile));
+    setProfile(updatedProfile);
   };
 
-  const fetchProfile = () => {
+  const fetchProfile = async () => {
     if (!currentUser) return navigate("/Kanbas/Account/Signin");
-    setProfile(currentUser);
+    const user = await client.findUserById(currentUser._id);
+    setProfile(user);
   };
 
   const signout = async () => {
@@ -28,7 +30,7 @@ export default function Profile() {
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [currentUser]);
 
   return (
     <div id="wd-profile-screen">

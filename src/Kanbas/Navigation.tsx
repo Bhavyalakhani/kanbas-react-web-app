@@ -17,6 +17,7 @@ export default function KanbasNavigation() {
     { label: "Inbox", path: "/Kanbas/Inbox", icon: IoMailOpenOutline },
     { label: "Labs", path: "/Labs", icon: BsPersonWorkspace },
   ];
+
   return (
     <div
       id="wd-kanbas-navigation"

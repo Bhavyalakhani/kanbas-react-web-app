@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
-import KanbasNavigation from "./Navigation";
+import KanbasNavigation from "./navigation";
 import Courses from "./Courses";
-import "./style.css";
+import "./styles.css";
 import * as db from "./Database";
 import { useEffect, useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
